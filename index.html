@@ -1,14 +1,215 @@
-<!DOCTYPE html>
 <html>
 <head>
+<title>NY Species Stats</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Container for flexboxes */
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Style the navigation menu */
+nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+button {
+  background-color: #f4511e; /* Green */
+  border: 2px solid #555555;
+  color: white;
+  padding: 1px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+button:hover {background-color: #3e8e41}
+
+/* Style the content */
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 1px;
+  text-align: center;
+  color: white;
+}
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 1px 40px ;
+  font-size: 16px;
+  border: 2px solid #f44336;
+}
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 1px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+/* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
   <head>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src = 'node.js'></script>
-</head
+    <script src="species.js"></script>
+    <body  onload = "setInterval(requestSearch,4000)">
+    </body>
+  </head>
+<header>
+  <h2>NY Species  Statistics</h2>
+</header>
 
-</head>
-<body>
-  bbbbaaaaaaaaaasdfsdsdf!!!
+
+
+<section>
+<article>
+     <body onload="getMap();">
+
+<h2> <b><u>Pie Chart</u><b> </h2>
+
+
+<h3> <i>Select Species</i></h3>
+
+<div class="dropdown">
+  <button class="dropbtn">Animals<i class="fa fa-caret-down"></i></button>
+  <div class="dropdown-content">
+    <a href="#"><button onClick= "pietime('Amphibians');">Amphibians</button></a>
+    <a href="#"><button onClick= "pietime('Birds');">Birds</button></a>
+    <a href="#"><button onClick= "pietime('Butterflies and Moths');">Butterflies and Moths</button></a>
+    <a href="#"><button onClick= "pietime('Dragonflies and Damselflies');">Dragonflies and Damselflies</button></a>
+    <a href="#"><button onClick= "pietime('Mammals');">Mammals</button></a>
+    <a href="#"><button onClick= "pietime('Mussels and Clams');">Mussels and Clams</button></a>
+    <a href="#"><button onClick= "pietime('Reptiles');">Reptiles</button></a>
+    <a href="#"><button onClick= "pietime('Beetles');">Beetles</button></a>
+    <a href="#"><button onClick= "pietime('Crustaceans');">Crustaceans</button></a>
+    <a href="#"><button onClick= "pietime('Mayflies');">Mayflies</button></a>
+    <a href="#"><button onClick= "pietime('Snails');">Snails</button></a>
+    <a href="#"><button onClick= "pietime('Bees, Wasps, and Ants');">Bees, Wasps, and Ants</button></a>
+  </div>
+</div>
+
+
+<div class="dropdown">
+  <button class="dropbtn">Plants</button>
+  <div class="dropdown-content">
+    <a href="#"><button onClick= "pietime('Conifers');">Conifers</button></a>
+    <a href="#"><button onClick= "pietime('Ferns and Fern Allies');">Ferns and Fern Allies</button></a>
+    <a href="#"><button onClick= "pietime('Flowering Plants');">Flowering Plants</button></a>
+    <a href="#"><button onClick= "pietime('Mosses');">Mosses</button></a>
+  </div>
+</div>
+
+
+<div class="dropdown">
+  <button class="dropbtn">Natural Features</button>
+  <div class="dropdown-content">
+    <a href="#"><button onClick= "pietime('Freshwater Nontidal Wetlands');">Freshwater Nontidal Wetlands</button></a>
+    <a href="#"><button onClick= "pietime('Tidal Wetlands');">Tidal Wetlands</button></a>
+    <a href="#"><button onClick= "pietime('Uplands');">Uplands</button></a>
+    <a href="#"><button onClick= "pietime('Marine');">Marine</button></a>
+    <a href="#"><button onClick= "pietime('Rivers and Streams');">Rivers and Streams</button></a>
+    <a href="#"><button onClick= "pietime('Lakes and Ponds');">Lakes and Ponds</button></a>
+    <a href="#"><button onClick= "pietime('Subterranean');">Subterranean</button></a>
+
+  </div>
+</div>
+<div id="pie"></div>
+</article>
+</section>
+<section>
+
+
+<article>
+     <h2> <u>Map of New York Species </u></h2>
+     <h3> <i> Select endangerment status for distribution map in NY </i></h3>
+       <button onClick= "extMap();">Near Extinction</button></a>
+       <button onClick= "endMap();">Critically Endangered</button></a>
+       <button onClick= "vulMap();">Vulnerable</button></a>
+<div id="map"></div>
+</article>
+<nav>
+     <body>
+
+        <h3><b> Individual County Data</b></h3>
+    <div id = 'county'></div><br/>
+    Search County for Species Data: <input type = 'text' id = 'search'></br>
+    <button onClick = "searchCounty();">Search</button>
+    <div id = 'boat'></div><br/>
 </body>
-<div id="tester"></div>
+</nav>
+
+</section>
+
 </html>
