@@ -14,5 +14,4 @@ var trace2 = {
 
 var data = [trace1, trace2];
 
-TESTER = document.getElementById('tester')
-Plotly.newPlot(TESTER, data);
+Plotly.newPlot('tester', data);
