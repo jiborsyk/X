@@ -1,3 +1,5 @@
+import Plotly
+
 var trace1 = {
   x: [1, 2, 3, 4],
   y: [10, 15, 13, 17],
